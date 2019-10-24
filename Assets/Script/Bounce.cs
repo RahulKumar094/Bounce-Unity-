@@ -13,6 +13,8 @@ public class Bounce : MonoBehaviour
 	public float maxFocusTime = 3f;
 	
 	public int focusStep = 1;
+
+	private Joystick mJoyStick;
 	private float maxVel = 10;
 	private float maxYVel = 12;
 	private Vector3 vel;
@@ -64,6 +66,7 @@ public class Bounce : MonoBehaviour
 
 	void Start()
     {
+		mJoyStick = FindObjectOfType<Joystick>();
 		fov = minFOV;
 		pos = transform.position;
 		vel = new Vector3(0, 0, 0);
@@ -227,7 +230,15 @@ public class Bounce : MonoBehaviour
 
 		if (!animated)
 		{
+
+
+#if UNITY_ANDROID
+			if (mJoyStick != null)
+				vel.x = mJoyStick.Horizontal * maxVel;
+#elif UNITY_STANDALONE_WIN || UNITY_EDITOR
 			vel.x = Input.GetAxis("Horizontal") * maxVel;
+#endif
+
 			//vel.x = InputHandler.horz * maxVel;
 		}
 		else

@@ -1,2 +1,8 @@
 Logs/
 Library/
+.vs/
+Build/
+obj/
+Bounce(Unity).sln
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj

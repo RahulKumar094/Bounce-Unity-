@@ -23,8 +23,12 @@ public class UIManager : MonoBehaviour
 		UpdateMaxValue();
 	}
 
-    // Update is called once per frame
-    void LateUpdate()
+	private void FixedUpdate()
+	{
+	}
+
+	// Update is called once per frame
+	void LateUpdate()
     {
 		float focusTime = focusSliderParent.maxValue - Bounce.Instance.getFocusTime;
 		focusSlider.value = focusTime;
